@@ -1,0 +1,1 @@
+Algoritmo para obtener el área de un triangulo1.-Inicio2.-Obtener base, altura3.- Area total= base * altura /24.- R= Area final5.- Fin
