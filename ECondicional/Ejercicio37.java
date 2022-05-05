@@ -9,7 +9,8 @@ public class Ejercicio37 {
 
     static Scanner lt=new Scanner(System.in);
 
-    public static void main(String[] args) {
+
+    public static void preguntaunoDMP() {
         //Declarar variables
         int edad;
         double promedio;
@@ -42,6 +43,22 @@ public class Ejercicio37 {
             }
         }
         //Datos de Salida
-        System.out.println(resBeca);
+        System.out.println(resBeca);        
+    }
+
+    public static void main(String[] args) {;
+        System.out.println("Ingrese la pregunta");
+        int pregunata = lt.nextInt();
+        switch (pregunata) {
+          case 1:
+            preguntaunoDMP();
+            break;
+          case 2:
+            System.out.println("Tuesday");
+            break;
+          case 3:
+            System.out.println("Wednesday");
+            break;            
+        }        
     }
 }
