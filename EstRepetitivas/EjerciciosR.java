@@ -38,6 +38,19 @@ public class EjerciciosR {
         }
     }
 
+    public static void imprimirNombreRevesVertical() {
+        //Declarar Varibales
+        String nombre;
+        //Datos de entrada
+        System.out.println("Ingrese su nombre:");
+        Scanner lt=new Scanner(System.in);
+        nombre=lt.next();
+        //Proceso y Salida
+        for (int i = nombre.length()-1; i >=0; i--) {
+            System.out.println(nombre.charAt(i));
+        }
+    }    
+
     public static void main(String[] args) {
        /* System.out.println("While");
         imprimirN1_10While();
@@ -47,6 +60,7 @@ public class EjerciciosR {
         System.out.println("For:");
         imprimirN1_10for(); */
         imprimirNombreVertical();
+        imprimirNombreRevesVertical();
 
     }
 
