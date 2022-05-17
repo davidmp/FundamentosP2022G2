@@ -46,7 +46,7 @@ public class Ejercicio37 {
         System.out.println(resBeca);        
     }
 
-    public static void main(String[] args) {;
+    public static void main(String[] args) {
         System.out.println("Ingrese la pregunta");
         int pregunata = lt.nextInt();
         switch (pregunata) {
@@ -61,4 +61,5 @@ public class Ejercicio37 {
             break;            
         }        
     }
+    
 }
