@@ -6,7 +6,7 @@ public class EjerciciosRepetitivas {
     
    static Scanner lt=new Scanner(System.in);
 
-    public static void ejer41While() {
+    public static void ejer40While() {
         int contador=1;
         int suma=0;
         while (contador<=20) {
