@@ -11,7 +11,7 @@ public class Ejercicio418 {
 
     public static void impuestoVehiculos418() {
         String claveV, hayMas="S";
-        int cantVC1, cantVC2, cantVC3;
+        int cantVC1=0, cantVC2=0, cantVC3=0;
         double precioVC1=0, precioVC2=0, precioVC3=0,
         impVC1=0, impVC2=0, impVC3=0, totalImpV=0;
 
@@ -20,23 +20,26 @@ public class Ejercicio418 {
             claveV=leerT.next().toUpperCase();
             if (claveV.equals("VC1")) {
                 System.out.println("Ingres cantidad de Vehiculo con clave "+claveV+":");
-                cantVC1=leerT.nextInt();
+                cantVC1=cantVC1+leerT.nextInt();
                 System.out.println("Ingres el precio del Vehiculo con clave "+claveV+":");
                 precioVC1=leerT.nextDouble();
                 impVC1=precioVC1*0.10;
             }else if (claveV.equals("VC2")){
                 System.out.println("Ingres cantidad de Vehiculo con clave "+claveV+":");
-                cantVC2=leerT.nextInt();
+                cantVC2=cantVC2+leerT.nextInt();
                 System.out.println("Ingres el precio del Vehiculo con clave "+claveV+":");
                 precioVC2=leerT.nextDouble();
                 impVC2=precioVC2*0.07;                
             }else if(claveV.equals("VC3")){
                 System.out.println("Ingres cantidad de Vehiculo con clave "+claveV+":");
-                cantVC3=leerT.nextInt();
+                cantVC3=cantVC3+leerT.nextInt();
                 System.out.println("Ingres el precio del Vehiculo con clave "+claveV+":");
                 precioVC3=leerT.nextDouble();
                 impVC3=precioVC3*0.05;   
             }else{ System.out.println("La clave de vehiculo es incorrecto"); }
+            System.out.println("Hay mas vehiculos?: S=SI, N=NO");
+            hayMas=String.valueOf(leerT.next().toUpperCase().charAt(0));
+
         }
 
     }
