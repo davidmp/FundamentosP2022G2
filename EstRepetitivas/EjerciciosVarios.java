@@ -7,11 +7,12 @@ public class EjerciciosVarios {
     static Scanner leerT=new Scanner(System.in);
 
     public static void factorialXnum() {
-        int n, result=1; 
+        int n; 
+        long result=1;
         System.out.println("Ingrese un numero:");
         n=leerT.nextInt();
         if(n>1){
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i <=n; i++) {
             result=result*i; 
             }
         }
