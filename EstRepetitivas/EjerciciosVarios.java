@@ -19,6 +19,18 @@ public class EjerciciosVarios {
         System.out.println("El factorial de "+n+" es:"+result);
     }
 
+    public static long factorialNum(int n) {        
+        long result=1;
+        if(n>1){
+        for (int i = 1; i <=n; i++) {
+            result=result*i; 
+            }
+        }       
+        return result;
+    }    
+
+
+
     public static void main(String[] args) {
         factorialXnum();
     }
