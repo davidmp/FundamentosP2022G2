@@ -20,7 +20,7 @@ public class EjerciciosVarios {
         System.out.println("El factorial de "+n+" es:"+result);
     }
 
-    public static long factorialNum(int n) {        
+    public static long factorialNum(int n) {       
         long result=1;
         if(n>1){
         for (int i = 1; i <=n; i++) {
@@ -42,7 +42,7 @@ public class EjerciciosVarios {
 
     public static void funcionExponencial(int x) {
         double result=0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < x; i++) {
             result=result+(Math.pow(x, i)/factorialNum(i));
         }
         System.out.println("Funcion Exponencia es: "+result);
@@ -51,8 +51,7 @@ public class EjerciciosVarios {
     public static void main(String[] args) {
         /*factorialXnum();
         long resultado=factorialNum(5);
-        System.out.println("Resultado:"+resultado);*/
-        
+        System.out.println("Resultado:"+resultado);*/        
         /*System.out.println("Ingrese un numero:");
         int numero=leerT.nextInt();
         for (int i = 1; i <= numero; i++) {
