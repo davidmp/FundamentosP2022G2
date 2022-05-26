@@ -32,3 +32,12 @@ doskey /history
 ```console
     1  git pull
 ```
+
+# Comandos para compilar varias clases
+
+```console
+    javac -d ./ ./*.java
+    javac -d . *.java
+    
+    java subprogramas.ClaseGeneral
+```
