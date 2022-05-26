@@ -3,7 +3,7 @@ package subprogramas;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class LeerTeclado {
+ public class LeerTeclado {
     
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //Ya tenemos el "lector"
 
