@@ -39,7 +39,8 @@ class ArraysEjemplos{
         }   
         //Mostrar
         for (int i = 0; i < p.length; i++) {
-            System.out.println((i+1)+"\t"+p[i].codigo+"\t"+p[i].nombres+"\t"+ (p[i].asistencia==true?"Presente":"Ausente"));
+            System.out.println((i+1)+"\t"+p[i].codigo+"\t"+p[i].nombres+"\t"+ 
+            (p[i].asistencia==true?"Presente":"Ausente"));
         }
     }
     public static void main(String[] args) {
