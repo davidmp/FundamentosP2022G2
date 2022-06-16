@@ -6,7 +6,7 @@ public class Persona {
     public boolean asistencia;   
     
     public Persona(String codigo, 
-    String nombres, boolean asistencia){
+        String nombres, boolean asistencia){
         this.codigo=codigo;
         this.nombres=nombres;
         this.asistencia=asistencia;
