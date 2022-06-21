@@ -1,4 +1,8 @@
-pe\edu\upeu\gui\MainGUI$1.class
 pe\edu\upeu\gui\MainGUI.class
-pe\edu\upeu\util\UtilsX.class
 pe\edu\upeu\app\App.class
+pe\edu\upeu\arrays\MatricesEjemplo.class
+pe\edu\upeu\modelo\Persona.class
+pe\edu\upeu\gui\MainGUI$1.class
+pe\edu\upeu\arrays\ArraysEjemplos.class
+pe\edu\upeu\util\UtilsX.class
+pe\edu\upeu\modelo\MarcaTO.class
