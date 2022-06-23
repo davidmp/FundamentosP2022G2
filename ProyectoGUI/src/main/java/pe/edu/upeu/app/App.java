@@ -6,11 +6,9 @@ import pe.edu.upeu.gui.MainGUI;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-        new MainGUI();
+public class App {
+    public static void main(String[] args) {
+        new MenuOpciones().login();
+        // new MainGUI();
     }
 }
