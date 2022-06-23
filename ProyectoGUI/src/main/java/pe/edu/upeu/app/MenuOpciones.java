@@ -25,7 +25,7 @@ public class MenuOpciones {
             login();
         }
     }
-
+    
     public void menuPrincipal() {
         System.out.println("------------------------------------Sistema de Ventas------------------------------");
         int opciones = 1;
