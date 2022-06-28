@@ -2,6 +2,7 @@ package pe.edu.upeu.app;
 
 import java.io.Console;
 
+import pe.edu.upeu.dao.UsuarioDao;
 import pe.edu.upeu.modelo.UsuarioTO;
 import pe.edu.upeu.util.LeerTeclado;
 
@@ -30,12 +31,13 @@ public class MenuOpciones {
         System.out.println("------------------------------------Sistema de Ventas------------------------------");
         int opciones = 1;
         String menu = "";
-        menu += "1=Registro de Productos\n";
-        menu += "2=Registro de Ventas\n";
+        menu += "1=Registro de Usuario\n";
+        menu += "2=Listar Usuarios\n";
         System.out.println(menu);
         do {
             switch (opciones) {
-                case 1: System.out.println("Registro Productos");   break;
+                case 1: new UsuarioDao().crearUsuarios();   break;
+                case 2: new UsuarioDao().listarUsuarios();   break;
 
                 default: System.out.println("Opcion Invalida!"); break;
             }
