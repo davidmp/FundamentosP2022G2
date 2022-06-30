@@ -18,8 +18,7 @@ public class MenuOpciones {
         System.out.println("Ingrese su clave:");
         char[] clavex = cons.readPassword();
         uTo.clave = String.valueOf(clavex);
-
-        if (uTo.usuario.equals("davidmp") && uTo.clave.equals("123456")) {
+        if (new UsuarioDao().login(uTo.getUsuario(), uTo.getClave())) {
             menuPrincipal();
         } else {
             System.out.println("Intente Nuevamente!! sus credenciales son invalidos!");
@@ -29,7 +28,7 @@ public class MenuOpciones {
     
     public void menuPrincipal() {
         System.out.println("------------------------------------Sistema de Ventas------------------------------");
-        int opciones = 1;
+        int opciones = 2;
         String menu = "";
         menu += "1=Registro de Usuario\n";
         menu += "2=Listar Usuarios\n";
