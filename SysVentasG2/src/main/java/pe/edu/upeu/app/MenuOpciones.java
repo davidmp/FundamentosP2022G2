@@ -7,6 +7,7 @@ import pe.edu.upeu.dao.ClienteDao;
 import pe.edu.upeu.dao.MarcaDao;
 import pe.edu.upeu.dao.ProductoDao;
 import pe.edu.upeu.dao.UsuarioDao;
+import pe.edu.upeu.dao.VentaDao;
 import pe.edu.upeu.modelo.UsuarioTO;
 import pe.edu.upeu.util.LeerTeclado;
 
@@ -32,13 +33,14 @@ public class MenuOpciones {
     
     public void menuPrincipal() {
         System.out.println("------------------------------------Sistema de Ventas------------------------------");
-        int opciones = 2;
+        int opciones = 7;
         String menu = "";
         menu += "1=Registro de Usuario\n";
         menu += "2=Listar Usuarios\n";
         menu += "3=Crear Categoria\n";
         menu += "4=Crear Marca\n";
         menu += "5=Crear Cliente\n6=Crear Producto\n7=Listar Productos\n";
+        menu+="8=Registro Ventas";
         System.out.println(menu);
         do {
             switch (opciones) {
@@ -49,6 +51,7 @@ public class MenuOpciones {
                 case 5: new ClienteDao().crearCliente(); break;
                 case 6: new ProductoDao().crearProducto(); break;
                 case 7: new ProductoDao().reportarProductos(); break;
+                case 8: new VentaDao().registroVentaGeneral();break;
                 default: System.out.println("Opcion Invalida!"); break;
             }
             String continuar=leerT.leer("",
