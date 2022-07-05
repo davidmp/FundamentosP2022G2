@@ -28,7 +28,14 @@ public class VentaDao extends AppCrud{
         vTo.setIdVenta(idVX);
         vTo.setDniruc(validarCliente(leerT.leer("", "Ingrese DNI/RUC cliente")));
         if (crearVenta(vTo)!=null) {
-            System.out.println("Agregar Productos a carrito de venta");
+            char continuar='N';
+            do {
+                System.out.println("--------------Agregar Productos-----------");                    
+                    carritoVentas(vTo);
+                continuar= leerT.leer("", "Desea Agregar mas Productos?S/N")
+                                .toUpperCase()
+                                .charAt(0);
+            } while (continuar=='S');
         }
     }
 
@@ -43,8 +50,30 @@ public class VentaDao extends AppCrud{
         return null;
     }
 
-    public void carritoVentas(VentaTO to) {
-        
+    public VentaDetalleTO carritoVentas(VentaTO to) {
+        System.out.println();
+        leerA=new LeerArchivo(TABLA_VENTADETALLE);
+        vdTo=new VentaDetalleTO();
+        String idDV=generarId(leerA, 0, "DV", 2);
+        vdTo.setIdVentDet(idDV);
+        vdTo.setIdVenta(to.getIdVenta());
+        mostrarProductos();
+        vdTo.setIdProducto(leerT.leer("", "Ingrese Id Producto"));
+        vdTo.setCantidad(leerT.leer(0, "Ingrese Cantidad"));
+        vdTo.setDescuento(0);
+        leerA=new LeerArchivo(TABLA_PRODUCTO);
+        Object[][] dataP=buscarContenido(leerA, 0, vdTo.getIdProducto());
+        double pux=Double.parseDouble(String.valueOf(dataP[0][4]));
+        vdTo.setPu(pux);
+        vdTo.setSubtotal(vdTo.getCantidad()*vdTo.getPu());
+        leerA=new LeerArchivo(TABLA_VENTADETALLE);
+        agregarContenido(leerA, vdTo);
+        leerA=new LeerArchivo(TABLA_VENTADETALLE);
+        Object[][] dataX=buscarContenido(leerA, 0, idDV);
+        if (dataX.length==1) {
+            return vdTo;
+        }
+        return null;
     }
 
     public String validarCliente(String dniruc) {
