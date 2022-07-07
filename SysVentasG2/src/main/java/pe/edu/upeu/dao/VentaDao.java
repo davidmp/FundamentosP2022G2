@@ -1,5 +1,8 @@
 package pe.edu.upeu.dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import pe.edu.upeu.crud.AppCrud;
 import pe.edu.upeu.modelo.VentaDetalleTO;
 import pe.edu.upeu.modelo.VentaTO;
@@ -19,6 +22,9 @@ public class VentaDao extends AppCrud{
     final static String TABLA_VENTA="Venta.txt";
     final static String TABLA_VENTADETALLE="VentaDetalle.txt";
 
+    SimpleDateFormat formatoFechaHora = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+
     public void registroVentaGeneral() {
         util.clearConsole();
         System.out.println("*****************Registro de Ventas***************");
@@ -27,15 +33,26 @@ public class VentaDao extends AppCrud{
         String idVX=generarId(leerA, 0, "V", 1);
         vTo.setIdVenta(idVX);
         vTo.setDniruc(validarCliente(leerT.leer("", "Ingrese DNI/RUC cliente")));
-        if (crearVenta(vTo)!=null) {
+        Date fecha=new Date();
+        vTo.setFecha(formatoFechaHora.format(fecha));
+        VentaTO vX=crearVenta(vTo);
+        double montoX=0;
+        if (vX!=null) {
             char continuar='N';
             do {
                 System.out.println("--------------Agregar Productos-----------");                    
-                    carritoVentas(vTo);
+                 VentaDetalleTO vdX=carritoVentas(vTo);
+                 montoX+=vdX.getSubtotal();
+                 
                 continuar= leerT.leer("", "Desea Agregar mas Productos?S/N")
                                 .toUpperCase()
                                 .charAt(0);
             } while (continuar=='S');
+            leerA=new LeerArchivo(TABLA_VENTA); //Math.round(double*100.0)/100.0
+            vX.setPrecioTotal(Math.round(montoX*100.0)/100.0);
+            vX.setPreciobase(Math.round((montoX/1.18)*100.0)/100.0);
+            vX.setIgv(Math.round((vX.getPreciobase()*0.18)*100.0)/100.0);
+            editarRegistro(leerA, 0, vX.getIdVenta(), vX);
         }
     }
 
