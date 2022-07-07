@@ -1,6 +1,8 @@
 package pe.edu.upeu.dao;
 
 import java.io.Console;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import pe.edu.upeu.crud.AppCrud;
 import pe.edu.upeu.modelo.UsuarioTO;
@@ -22,10 +24,31 @@ public class UsuarioDao extends AppCrud {
         Console cons=System.console();
         System.out.println("Ingrese su calve:");
         char[] clavex=cons.readPassword();
-        uto.setClave(String.valueOf(clavex));
+        uto.setClave(getMD5EncryptedValue(String.valueOf(clavex)));
         leerA=new LeerArchivo(TABLA_USUARIO);
         agregarContenido(leerA, uto);
     }
+
+    public static String getMD5EncryptedValue(String password) {
+        final byte[] defaultBytes = password.getBytes();
+        try {
+        final MessageDigest md5MsgDigest = MessageDigest.getInstance("MD5");
+        md5MsgDigest.reset();
+        md5MsgDigest.update(defaultBytes);
+        final byte messageDigest[] = md5MsgDigest.digest();
+        final StringBuffer hexString = new StringBuffer();
+        for (final byte element : messageDigest) {
+        final String hex = Integer.toHexString(0xFF & element);
+        if (hex.length() == 1) {
+        hexString.append('0');}
+        hexString.append(hex);
+        }
+        password = hexString + "";
+        } catch (final NoSuchAlgorithmException nsae) {
+        nsae.printStackTrace();
+        }
+        return password;
+        }    
 
     public boolean login(String usuario, String clave) {
         leerA=new LeerArchivo(TABLA_USUARIO);

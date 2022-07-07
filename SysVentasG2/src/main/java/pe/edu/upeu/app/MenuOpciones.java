@@ -23,7 +23,7 @@ public class MenuOpciones {
         System.out.println("Ingrese su clave:");
         char[] clavex = cons.readPassword();
         uTo.clave = String.valueOf(clavex);
-        if (new UsuarioDao().login(uTo.getUsuario(), uTo.getClave())) {
+        if (new UsuarioDao().login(uTo.getUsuario(), new UsuarioDao().getMD5EncryptedValue(uTo.getClave()))) {
             menuPrincipal();
         } else {
             System.out.println("Intente Nuevamente!! sus credenciales son invalidos!");
