@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import pe.edu.upeu.crud.AppCrud;
+import pe.edu.upeu.modelo.ProductoTO;
 import pe.edu.upeu.modelo.VentaDetalleTO;
 import pe.edu.upeu.modelo.VentaTO;
 import pe.edu.upeu.util.LeerArchivo;
@@ -80,6 +81,9 @@ public class VentaDao extends AppCrud{
         vdTo.setDescuento(0);
         leerA=new LeerArchivo(TABLA_PRODUCTO);
         Object[][] dataP=buscarContenido(leerA, 0, vdTo.getIdProducto());
+        
+        actualizarProductoStock(vdTo.getIdProducto(),(int)vdTo.getCantidad());
+
         double pux=Double.parseDouble(String.valueOf(dataP[0][4]));
         vdTo.setPu(pux);
         vdTo.setSubtotal(vdTo.getCantidad()*vdTo.getPu());
@@ -91,6 +95,18 @@ public class VentaDao extends AppCrud{
             return vdTo;
         }
         return null;
+    }
+
+    public void actualizarProductoStock(String idP, int cantidad) {
+        System.err.println("VEER:"+cantidad);
+        leerA=new LeerArchivo(TABLA_PRODUCTO);
+        ProductoTO to=new ProductoTO();
+        Object[][] dataP=buscarContenido(leerA, 0, idP);
+        int x=Integer.parseInt(String.valueOf(dataP[0][6]));
+        System.err.println("VER2:"+x);
+        to.setStock(x-cantidad);
+        leerA=new LeerArchivo(TABLA_PRODUCTO);
+        editarRegistro(leerA, 0, idP, to);
     }
 
     public String validarCliente(String dniruc) {
@@ -107,7 +123,9 @@ public class VentaDao extends AppCrud{
         Object[][] dataP=listarContenido(leerA);
 
         for (int i = 0; i < dataP.length; i++) {
-            System.out.print(dataP[i][0]+"="+dataP[i][1]+", ");    
+            if(Integer.parseInt(String.valueOf(dataP[i][6]))>0){
+                System.out.print(dataP[i][0]+"="+dataP[i][1]+"(Stock:"+dataP[i][6]+")"+", ");    
+            }           
         }
         System.out.println("");
     }
