@@ -35,6 +35,23 @@ public class TransformadasMatriz {
         } 
         imprimirMatrices(matriz);
     }
+
+
+    public void transformada11() {
+        System.out.println("Ingrese Dimension Matriz:");
+        int dimension=cs.nextInt();
+        System.out.println("Ingrese valor de Inicio:");
+        int valorInit=cs.nextInt();  
+        String[][] matriz=new String[dimension][dimension];
+        
+        for (int fila = 0; fila < matriz.length; fila++) {
+            for (int columna = matriz[0].length-1-fila; columna>= 0; columna--) {
+                matriz[fila][columna]=""+valorInit;
+                valorInit++;
+            }
+        }
+        imprimirMatrices(matriz);
+    }
     
     public void transformada28() {
        System.out.println("Ingrese la Dimension de la Matriz:"); 
@@ -58,6 +75,35 @@ public class TransformadasMatriz {
         imprimirMatrices(matriz);
     }
     
+    public void transformada29() {
+        System.out.println("Ingrese la Dimension de la Matriz:"); 
+        int dimension=cs.nextInt();
+        System.out.println("");
+        String[][] matriz=new String[dimension][dimension];//5
+        int valor=0;              
+        for (int v = 0; v < dimension/2; v++) {//2.5
+            for (int ls = v; ls < (matriz[0].length-1)-v; ls++) {
+                matriz[v][ls]=""+valor;
+                valor++;
+            }
+            for (int ld = v; ld < (matriz.length-1)-v; ld++) {
+                matriz[ld][(matriz.length-1)-v]=""+valor;
+                valor++;
+            }
+            for (int lin = (matriz.length-1)-v; lin > v; lin--) {
+                matriz[(matriz.length-1)-v][lin]=""+valor;
+                valor++;
+            }
+            for (int liz = (matriz.length-1)-v; liz  > v; liz--) {
+                matriz[liz][v]=""+valor;
+                valor++;                
+            }
+        }
+        if (dimension%2!=0) {
+            matriz[dimension/2][dimension/2]=""+valor;
+            }
+        imprimirMatrices(matriz);
+    }
     
     public void imprimirMatrices(String[][] m) {
         for (int f = 0; f < m.length; f++) {
@@ -77,6 +123,6 @@ public class TransformadasMatriz {
 
     public static void main(String[] args) {
        // new TransformadasMatriz().transformada01();
-       new TransformadasMatriz().transformada28();
+       new TransformadasMatriz().transformada11();
     }
 }
